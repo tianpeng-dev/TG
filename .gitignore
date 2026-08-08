@@ -1,0 +1,53 @@
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# Trae agent working artifacts (keep .trae/documents plan files tracked)
+.trae/mcp/
+.trae/cache/
+
+# ===== Secrets / Env =====
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Python (backend) =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# ===== Node (frontend) =====
+node_modules/
+.pnpm-store/
+.turbo/
+*.tsbuildinfo
+dist/
+build/
+.expo/
+
+# ===== Databases / Local state =====
+*.db
+*.sqlite
+*.sqlite3
+test.db
+
+# ===== Build / Misc artifacts =====
+.trae-html-share-packages/

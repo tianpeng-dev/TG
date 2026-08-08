@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页交互态（桌面端） - TremorGuard</title>
+    <style id="theme-vars">
+:root {
+  --tg-primary: #0F766E;
+  --tg-primary-foreground: #FFFFFF;
+  --tg-primary-light: #14B8A6;
+  --state-success: #059669;
+  --state-success-foreground: #FFFFFF;
+  --state-success-light: #ECFDF5;
+  --state-warning: #D97706;
+  --state-warning-foreground: #FFFFFF;
+  --state-warning-light: #FFFBEB;
+  --state-error: #DC2626;
+  --state-error-foreground: #FFFFFF;
+  --state-error-light: #FEF2F2;
+  --state-info: #0891B2;
+  --tg-neutral-50: #F8F9FB;
+  --tg-neutral-100: #F1F3F5;
+  --tg-neutral-200: #E5E7EB;
+  --tg-neutral-300: #D1D5DB;
+  --tg-neutral-400: #9CA3AF;
+  --tg-neutral-500: #6B7280;
+  --tg-neutral-600: #4B5563;
+  --tg-neutral-700: #374151;
+  --tg-neutral-800: #1F2937;
+  --tg-neutral-900: #1A1D23;
+  --tg-background: #F8F9FB;
+  --tg-foreground: #1A1D23;
+  --tg-card: #FFFFFF;
+  --tg-muted: #F1F3F5;
+  --tg-muted-foreground: #6B7280;
+  --tg-border: #E5E7EB;
+  --tg-ring: #0F766E;
+  --tg-msg-system: #F0FDFA;
+  --tg-msg-user: #ECFEFF;
+  --tg-msg-alert: #FFFBEB;
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 12px;
+  --tg-radius-lg: 16px;
+  --tg-radius-full: 9999px;
+  --tg-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --tg-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --tg-shadow-floating: 0 8px 24px rgba(0,0,0,0.08);
+  --tg-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --tg-text-sm: 14px;
+  --tg-text-base: 16px;
+  --tg-text-lg: 18px;
+  --tg-text-xl: 20px;
+  --tg-text-2xl: 24px;
+  --tg-text-3xl: 28px;
+  --tg-weight-regular: 400;
+  --tg-weight-medium: 500;
+  --tg-weight-bold: 700;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--tg-background);
+    --color-foreground: var(--tg-foreground);
+    --color-card: var(--tg-card);
+    --color-card-foreground: var(--tg-card-foreground);
+    --color-popover: var(--tg-popover);
+    --color-popover-foreground: var(--tg-popover-foreground);
+    --color-primary: var(--tg-primary);
+    --color-primary-foreground: var(--tg-primary-foreground);
+    --color-muted: var(--tg-muted);
+    --color-muted-foreground: var(--tg-muted-foreground);
+    --color-border: var(--tg-border);
+    --color-input: var(--tg-input);
+    --color-ring: var(--tg-ring);
+    --radius-sm: var(--tg-radius-sm);
+    --radius-md: var(--tg-radius-md);
+    --radius-lg: var(--tg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--tg-background); color: var(--tg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--tg-background); }
+      .text-background { color: var(--tg-background); }
+      .border-background { border-color: var(--tg-background); }
+      .ring-background { --tw-ring-color: var(--tg-background); }
+      .bg-foreground { background-color: var(--tg-foreground); }
+      .text-foreground { color: var(--tg-foreground); }
+      .border-foreground { border-color: var(--tg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--tg-foreground); }
+      .bg-card { background-color: var(--tg-card); }
+      .text-card { color: var(--tg-card); }
+      .border-card { border-color: var(--tg-card); }
+      .ring-card { --tw-ring-color: var(--tg-card); }
+      .bg-card-foreground { background-color: var(--tg-card-foreground); }
+      .text-card-foreground { color: var(--tg-card-foreground); }
+      .border-card-foreground { border-color: var(--tg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--tg-card-foreground); }
+      .bg-popover { background-color: var(--tg-popover); }
+      .text-popover { color: var(--tg-popover); }
+      .border-popover { border-color: var(--tg-popover); }
+      .ring-popover { --tw-ring-color: var(--tg-popover); }
+      .bg-popover-foreground { background-color: var(--tg-popover-foreground); }
+      .text-popover-foreground { color: var(--tg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--tg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--tg-popover-foreground); }
+      .bg-primary { background-color: var(--tg-primary); }
+      .text-primary { color: var(--tg-primary); }
+      .border-primary { border-color: var(--tg-primary); }
+      .ring-primary { --tw-ring-color: var(--tg-primary); }
+      .bg-primary-foreground { background-color: var(--tg-primary-foreground); }
+      .text-primary-foreground { color: var(--tg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--tg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--tg-primary-foreground); }
+      .bg-muted { background-color: var(--tg-muted); }
+      .text-muted { color: var(--tg-muted); }
+      .border-muted { border-color: var(--tg-muted); }
+      .ring-muted { --tw-ring-color: var(--tg-muted); }
+      .bg-muted-foreground { background-color: var(--tg-muted-foreground); }
+      .text-muted-foreground { color: var(--tg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--tg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--tg-muted-foreground); }
+      .bg-border { background-color: var(--tg-border); }
+      .text-border { color: var(--tg-border); }
+      .border-border { border-color: var(--tg-border); }
+      .ring-border { --tw-ring-color: var(--tg-border); }
+      .bg-input { background-color: var(--tg-input); }
+      .text-input { color: var(--tg-input); }
+      .border-input { border-color: var(--tg-input); }
+      .ring-input { --tw-ring-color: var(--tg-input); }
+      .bg-ring { background-color: var(--tg-ring); }
+      .text-ring { color: var(--tg-ring); }
+      .border-ring { border-color: var(--tg-ring); }
+      .ring-ring { --tw-ring-color: var(--tg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      @keyframes bounce-dot {
+        0%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-6px); }
+      }
+      .typing-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--tg-primary);
+        animation: bounce-dot 1.4s ease-in-out infinite;
+      }
+      .typing-dot:nth-child(2) { animation-delay: 0.16s; }
+      .typing-dot:nth-child(3) { animation-delay: 0.32s; }
+    </style>
+</head>
+<body class="min-h-screen max-w-full" style="font-family: var(--tg-font-sans);">
+
+<!-- ===== LEFT SIDEBAR ===== -->
+<aside class="fixed top-0 left-0 w-[240px] h-screen flex flex-col" style="background: var(--tg-primary);">
+  <!-- Logo -->
+  <div class="flex items-center gap-3 px-6 h-16 flex-shrink-0">
+    <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--tg-primary-light);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12h3L7 8l4 8 4-16 4 8h3"/>
+      </svg>
+    </div>
+    <span class="text-white font-bold text-lg tracking-tight">TremorGuard</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 px-3 mt-4">
+    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-white" style="background: var(--tg-primary-light);" data-nav-key="home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span class="font-medium" style="font-size: var(--tg-text-base);">首页</span>
+    </a>
+    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg mt-1" style="color: rgba(255,255,255,0.65);" data-dom-id="nav-reports" onmouseenter="this.style.background='rgba(255,255,255,0.1)'" onmouseleave="this.style.background='transparent'">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+      <span style="font-size: var(--tg-text-base);">报告</span>
+    </a>
+    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg mt-1" style="color: rgba(255,255,255,0.65);" data-dom-id="nav-profile" onmouseenter="this.style.background='rgba(255,255,255,0.1)'" onmouseleave="this.style.background='transparent'">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span style="font-size: var(--tg-text-base);">我的</span>
+    </a>
+  </nav>
+
+  <!-- User section at bottom -->
+  <div class="px-4 pb-5 flex-shrink-0">
+    <div class="border-t pt-4" style="border-color: rgba(255,255,255,0.2);">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background: var(--tg-primary-light);">
+          张
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-white text-sm font-medium truncate">张秀兰</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="w-2 h-2 rounded-full" style="background: #4ADE80;"></span>
+            <span style="color: rgba(255,255,255,0.6); font-size: 12px;">设备已连接</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="flex flex-col h-screen" style="margin-left: 240px;">
+
+  <!-- Top bar -->
+  <header class="flex items-center justify-between px-8 h-16 flex-shrink-0" style="background: var(--tg-card); border-bottom: 1px solid var(--tg-border);">
+    <div class="flex items-center gap-3">
+      <h1 class="text-xl font-bold" style="color: var(--tg-foreground);">对话助手</h1>
+      <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background: var(--state-success-light);">
+        <span class="w-2 h-2 rounded-full" style="background: var(--state-success);"></span>
+        <span class="text-xs font-medium" style="color: var(--state-success);">已连接</span>
+      </div>
+    </div>
+    <button class="w-9 h-9 rounded-lg flex items-center justify-center" style="color: var(--tg-neutral-500);" onmouseenter="this.style.background='var(--tg-muted)'" onmouseleave="this.style.background='transparent'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Chat area -->
+  <div class="flex-1 overflow-y-auto no-scrollbar px-8 py-6" style="background: var(--tg-background);">
+
+    <!-- AI Message: Morning Summary - CONFIRMED (08:00) -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--tg-primary);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+          <circle cx="12" cy="5" r="2"/>
+          <line x1="12" y1="7" x2="12" y2="11"/>
+          <line x1="8" y1="16" x2="8" y2="16"/>
+          <line x1="16" y1="16" x2="16" y2="16"/>
+        </svg>
+      </div>
+      <div style="max-width: 65%;">
+        <div class="rounded-xl p-4" style="background: var(--tg-card); box-shadow: var(--tg-shadow-sm); border: 1px solid var(--tg-border);">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="font-medium" style="font-size: var(--tg-text-base); color: var(--tg-foreground);">早安问候</span>
+            <span class="px-2 py-0.5 rounded text-xs font-medium" style="background: var(--tg-msg-system); color: var(--tg-primary);">每日摘要</span>
+          </div>
+          <p style="font-size: var(--tg-text-base); color: var(--tg-foreground); line-height: 1.6;">
+            早上好，张奶奶！今天天气晴朗，气温 22-28°C。昨晚睡眠质量良好（7.2小时深睡占比 35%）。早上静止性震颤评估得分 <strong style="color: var(--tg-primary);">2.1</strong>/10，相比昨天略有改善。
+          </p>
+          <p style="font-size: var(--tg-text-sm); color: var(--tg-muted-foreground); margin-top: 8px;">
+            今日提醒：上午10:00服用左旋多巴，下午进行15分钟手指灵活性练习。
+          </p>
+          <!-- Confirmed badge -->
+          <div class="flex items-center gap-1.5 mt-3 pt-3" style="border-top: 1px solid var(--tg-border);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: var(--state-success);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium" style="color: var(--state-success);">已确认</span>
+            <span class="text-sm" style="color: var(--tg-neutral-400);">08:05</span>
+          </div>
+        </div>
+        <span class="block mt-1.5" style="font-size: 12px; color: var(--tg-neutral-400);">08:00</span>
+      </div>
+    </div>
+
+    <!-- User Message: (08:05) -->
+    <div class="flex items-start gap-3 mb-6 justify-end">
+      <div style="max-width: 65%;">
+        <div class="rounded-xl p-4" style="background: var(--tg-primary); color: white;">
+          <p style="font-size: var(--tg-text-base); line-height: 1.6;">今天感觉怎么样？</p>
+        </div>
+        <span class="block mt-1.5 text-right" style="font-size: 12px; color: var(--tg-neutral-400);">08:05</span>
+      </div>
+    </div>
+
+    <!-- AI Message: Medication Reminder - TAKEN (12:00) -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--tg-primary);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+          <circle cx="12" cy="5" r="2"/>
+          <line x1="12" y1="7" x2="12" y2="11"/>
+          <line x1="8" y1="16" x2="8" y2="16"/>
+          <line x1="16" y1="16" x2="16" y2="16"/>
+        </svg>
+      </div>
+      <div style="max-width: 65%;">
+        <div class="rounded-xl overflow-hidden" style="background: var(--tg-card); box-shadow: var(--tg-shadow-sm); border: 1px solid var(--state-success);">
+          <div class="px-4 py-3" style="border-bottom: 1px solid var(--tg-border);">
+            <div class="flex items-center gap-2">
+              <!-- Pill icon now GREEN -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--state-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3m-3 0h3m-3 18.75h3"/>
+              </svg>
+              <span class="font-medium" style="font-size: var(--tg-text-base); color: var(--tg-foreground);">用药提醒</span>
+              <!-- Confirmed badge -->
+              <span class="px-2 py-0.5 rounded text-xs font-medium" style="background: var(--state-success-light); color: var(--state-success);">已服药</span>
+            </div>
+          </div>
+          <div class="px-4 py-3">
+            <p style="font-size: var(--tg-text-base); color: var(--tg-foreground); line-height: 1.5;">
+              张奶奶，现在到了服用<strong>美多芭（左旋多巴）</strong>的时间。剂量：1片（250mg），饭后30分钟服用。
+            </p>
+            <div class="flex items-center gap-2 mt-3" style="color: var(--tg-muted-foreground); font-size: var(--tg-text-sm);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>距上次服药已 4 小时</span>
+            </div>
+          </div>
+          <div class="px-4 pb-3 flex items-center gap-2">
+            <!-- "已服药" button: disabled with checkmark -->
+            <button class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium cursor-not-allowed opacity-60" style="background: var(--state-success); color: white; min-height: 40px; font-size: var(--tg-text-sm);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              已服药
+            </button>
+            <!-- "稍后提醒" button: grayed out -->
+            <button class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium cursor-not-allowed opacity-40" style="background: var(--tg-neutral-200); color: var(--tg-neutral-400); min-height: 40px; font-size: var(--tg-text-sm);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              稍后提醒
+            </button>
+          </div>
+        </div>
+        <span class="block mt-1.5" style="font-size: 12px; color: var(--tg-neutral-400);">12:00</span>
+      </div>
+    </div>
+
+    <!-- AI Message: Alert - HANDLED (14:32) -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--tg-primary);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+          <circle cx="12" cy="5" r="2"/>
+          <line x1="12" y1="7" x2="12" y2="11"/>
+          <line x1="8" y1="16" x2="8" y2="16"/>
+          <line x1="16" y1="16" x2="16" y2="16"/>
+        </svg>
+      </div>
+      <div style="max-width: 65%;">
+        <div class="rounded-xl overflow-hidden" style="background: var(--tg-card); box-shadow: var(--tg-shadow-sm); border: 1px solid var(--tg-border);">
+          <div class="px-4 py-3 flex items-center gap-2" style="background: var(--tg-neutral-50); border-bottom: 1px solid var(--tg-border);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="color: var(--tg-neutral-500);" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span class="font-bold" style="font-size: var(--tg-text-sm); color: var(--tg-neutral-600);">异常震颤警报</span>
+            <!-- "已处理" green badge -->
+            <span class="px-2 py-0.5 rounded text-xs font-medium" style="background: var(--state-success-light); color: var(--state-success);">已处理</span>
+          </div>
+          <div class="px-4 py-3">
+            <p style="font-size: var(--tg-text-base); color: var(--tg-foreground); line-height: 1.5;">
+              检测到您过去 30 分钟内静止性震颤频率升高（由 4.2Hz 升至 <strong style="color: var(--tg-neutral-600);">7.8Hz</strong>），幅度增加约 45%。可能的原因：
+            </p>
+            <ul class="mt-2 space-y-1" style="font-size: var(--tg-text-sm); color: var(--tg-muted-foreground);">
+              <li class="flex items-start gap-2">
+                <span style="color: var(--tg-neutral-400);">1.</span>
+                <span>药物浓度下降（接近下次服药时间）</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span style="color: var(--tg-neutral-400);">2.</span>
+                <span>情绪波动或压力增加</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span style="color: var(--tg-neutral-400);">3.</span>
+                <span>过度疲劳</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Success notification text -->
+          <div class="px-4 pb-3 flex items-center gap-2 pt-2" style="border-top: 1px solid var(--tg-border);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: var(--state-success);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium" style="color: var(--state-success);">已通知照护者李女士</span>
+          </div>
+        </div>
+        <span class="block mt-1.5" style="font-size: 12px; color: var(--tg-neutral-400);">14:32</span>
+      </div>
+    </div>
+
+    <!-- AI Message: Daily Report (20:00) - buttons still active -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--tg-primary);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+          <circle cx="12" cy="5" r="2"/>
+          <line x1="12" y1="7" x2="12" y2="11"/>
+          <line x1="8" y1="16" x2="8" y2="16"/>
+          <line x1="16" y1="16" x2="16" y2="16"/>
+        </svg>
+      </div>
+      <div style="max-width: 65%;">
+        <div class="rounded-xl p-4" style="background: var(--tg-card); box-shadow: var(--tg-shadow-sm); border: 1px solid var(--tg-border);">
+          <div class="flex items-center gap-2 mb-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span class="font-medium" style="font-size: var(--tg-text-base); color: var(--tg-foreground);">每日健康报告</span>
+            <span class="px-2 py-0.5 rounded text-xs font-medium" style="background: var(--state-success-light); color: var(--state-success);">2025年7月25日</span>
+          </div>
+
+          <!-- Report summary grid -->
+          <div class="grid grid-cols-3 gap-3 mb-3">
+            <div class="rounded-lg p-3 text-center" style="background: var(--tg-neutral-50);">
+              <div class="text-2xl font-bold" style="color: var(--tg-primary);">2.8</div>
+              <div class="text-xs mt-1" style="color: var(--tg-muted-foreground);">平均震颤得分</div>
+            </div>
+            <div class="rounded-lg p-3 text-center" style="background: var(--tg-neutral-50);">
+              <div class="text-2xl font-bold" style="color: var(--state-success);">3/3</div>
+              <div class="text-xs mt-1" style="color: var(--tg-muted-foreground);">按时服药</div>
+            </div>
+            <div class="rounded-lg p-3 text-center" style="background: var(--tg-neutral-50);">
+              <div class="text-2xl font-bold" style="color: var(--state-info);">7.2h</div>
+              <div class="text-xs mt-1" style="color: var(--tg-muted-foreground);">睡眠时长</div>
+            </div>
+          </div>
+
+          <p style="font-size: var(--tg-text-sm); color: var(--tg-muted-foreground); line-height: 1.5;">
+            今日整体状况良好。震颤控制在合理范围内，下午出现一次短暂加剧（已记录）。建议明天继续保持规律作息和用药。
+          </p>
+
+          <div class="flex items-center gap-2 mt-3">
+            <button class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors" style="background: var(--tg-primary); color: white; min-height: 40px; font-size: var(--tg-text-sm);" onmouseenter="this.style.background='#0D6560'" onmouseleave="this.style.background='var(--tg-primary)'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              查看完整报告
+            </button>
+            <button class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors" style="background: var(--tg-muted); color: var(--tg-muted-foreground); min-height: 40px; font-size: var(--tg-text-sm);" onmouseenter="this.style.background='var(--tg-neutral-200)'" onmouseleave="this.style.background='var(--tg-muted)'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+              分享给家人
+            </button>
+          </div>
+        </div>
+        <span class="block mt-1.5" style="font-size: 12px; color: var(--tg-neutral-400);">20:00</span>
+      </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--tg-primary);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+          <circle cx="12" cy="5" r="2"/>
+          <line x1="12" y1="7" x2="12" y2="11"/>
+          <line x1="8" y1="16" x2="8" y2="16"/>
+          <line x1="16" y1="16" x2="16" y2="16"/>
+        </svg>
+      </div>
+      <div>
+        <div class="rounded-xl px-4 py-3 flex items-center gap-1.5" style="background: var(--tg-card); box-shadow: var(--tg-shadow-sm); border: 1px solid var(--tg-border);">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick action chips + Input bar -->
+  <div class="flex-shrink-0 px-8 pb-6 pt-2" style="background: var(--tg-background);">
+    <!-- Quick action chips -->
+    <div class="flex items-center gap-2 mb-3 flex-wrap">
+      <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm cursor-pointer transition-colors" style="background: var(--tg-card); border: 1px solid var(--tg-border); color: var(--tg-primary); font-size: var(--tg-text-sm);" onmouseenter="this.style.background='var(--tg-msg-system)'" onmouseleave="this.style.background='var(--tg-card)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+        查看今日报告
+      </button>
+      <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm cursor-pointer transition-colors" style="background: var(--tg-card); border: 1px solid var(--tg-border); color: var(--tg-primary); font-size: var(--tg-text-sm);" onmouseenter="this.style.background='var(--tg-msg-system)'" onmouseleave="this.style.background='var(--tg-card)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3m-3 0h3m-3 18.75h3"/>
+        </svg>
+        用药记录
+      </button>
+      <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm cursor-pointer transition-colors" style="background: var(--tg-card); border: 1px solid var(--tg-border); color: var(--tg-primary); font-size: var(--tg-text-sm);" onmouseenter="this.style.background='var(--tg-msg-system)'" onmouseleave="this.style.background='var(--tg-card)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+          <polyline points="17 6 23 6 23 12"/>
+        </svg>
+        最近一周趋势
+      </button>
+      <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm cursor-pointer transition-colors" style="background: var(--tg-card); border: 1px solid var(--tg-border); color: var(--tg-primary); font-size: var(--tg-text-sm);" onmouseenter="this.style.background='var(--tg-msg-system)'" onmouseleave="this.style.background='var(--tg-card)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        联系医生
+      </button>
+    </div>
+
+    <!-- Input bar -->
+    <div class="flex items-center gap-3 p-2 rounded-xl" style="background: var(--tg-card); border: 1px solid var(--tg-border); box-shadow: var(--tg-shadow-md);">
+      <button class="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer transition-colors" style="color: var(--tg-muted-foreground);" onmouseenter="this.style.background='var(--tg-muted)'" onmouseleave="this.style.background='transparent'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+          <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </button>
+      <input type="text" placeholder="输入消息..." class="flex-1 bg-transparent outline-none" style="font-size: var(--tg-text-base); color: var(--tg-foreground); height: 44px;" />
+      <button class="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer transition-colors" style="background: var(--tg-primary); color: white;" onmouseenter="this.style.background='#0D6560'" onmouseleave="this.style.background='var(--tg-primary)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

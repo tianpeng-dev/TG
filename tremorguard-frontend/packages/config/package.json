@@ -1,0 +1,9 @@
+{
+  "name": "@tremorguard/config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tsconfig/*",
+    "eslint/*"
+  ]
+}

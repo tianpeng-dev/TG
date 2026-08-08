@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的报告 - TremorGuard</title>
+    <style id="theme-vars">
+/* TremorGuard Brand Design System
+   Healthcare-grade accessible design for Parkinson's patients
+   Prefix: tg */
+
+:root {
+  /* ---- Primary Palette ---- */
+  --tg-primary: #0F766E;
+  --tg-primary-foreground: #FFFFFF;
+  --tg-primary-light: #14B8A6;
+
+  /* ---- Semantic State Colors ---- */
+  --state-success: #059669;
+  --state-success-foreground: #FFFFFF;
+  --state-success-light: #ECFDF5;
+  --state-warning: #D97706;
+  --state-warning-foreground: #FFFFFF;
+  --state-warning-light: #FFFBEB;
+  --state-error: #DC2626;
+  --state-error-foreground: #FFFFFF;
+  --state-error-light: #FEF2F2;
+  --state-info: #0891B2;
+  --state-info-foreground: #FFFFFF;
+  --state-info-light: #ECFEFF;
+
+  /* ---- Neutral Scale ---- */
+  --tg-neutral-50: #F8F9FB;
+  --tg-neutral-100: #F1F3F5;
+  --tg-neutral-200: #E5E7EB;
+  --tg-neutral-300: #D1D5DB;
+  --tg-neutral-400: #9CA3AF;
+  --tg-neutral-500: #6B7280;
+  --tg-neutral-600: #4B5563;
+  --tg-neutral-700: #374151;
+  --tg-neutral-800: #1F2937;
+  --tg-neutral-900: #1A1D23;
+
+  /* ---- Surface / Card Colors ---- */
+  --tg-background: #F8F9FB;
+  --tg-foreground: #1A1D23;
+  --tg-card: #FFFFFF;
+  --tg-card-foreground: #1A1D23;
+  --tg-muted: #F1F3F5;
+  --tg-muted-foreground: #6B7280;
+  --tg-popover: #FFFFFF;
+  --tg-popover-foreground: #1A1D23;
+  --tg-border: #E5E7EB;
+  --tg-input: #E5E7EB;
+  --tg-ring: #0F766E;
+
+  /* ---- Radius Scale ---- */
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 12px;
+  --tg-radius-lg: 16px;
+  --tg-radius-full: 9999px;
+
+  /* ---- Typography ---- */
+  --tg-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --tg-text-sm: 14px;
+  --tg-text-base: 16px;
+  --tg-text-lg: 18px;
+  --tg-text-xl: 20px;
+  --tg-text-2xl: 24px;
+  --tg-weight-regular: 400;
+  --tg-weight-medium: 500;
+  --tg-weight-bold: 700;
+
+  /* ---- Shadows ---- */
+  --tg-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --tg-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --tg-shadow-floating: 0 8px 24px rgba(0,0,0,0.08);
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--tg-background);
+    --color-foreground: var(--tg-foreground);
+    --color-card: var(--tg-card);
+    --color-card-foreground: var(--tg-card-foreground);
+    --color-popover: var(--tg-popover);
+    --color-popover-foreground: var(--tg-popover-foreground);
+    --color-primary: var(--tg-primary);
+    --color-primary-foreground: var(--tg-primary-foreground);
+    --color-muted: var(--tg-muted);
+    --color-muted-foreground: var(--tg-muted-foreground);
+    --color-border: var(--tg-border);
+    --color-input: var(--tg-input);
+    --color-ring: var(--tg-ring);
+    --radius-sm: var(--tg-radius-sm);
+    --radius-md: var(--tg-radius-md);
+    --radius-lg: var(--tg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--tg-background); color: var(--tg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--tg-background); }
+      .text-background { color: var(--tg-background); }
+      .border-background { border-color: var(--tg-background); }
+      .ring-background { --tw-ring-color: var(--tg-background); }
+      .bg-foreground { background-color: var(--tg-foreground); }
+      .text-foreground { color: var(--tg-foreground); }
+      .border-foreground { border-color: var(--tg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--tg-foreground); }
+      .bg-card { background-color: var(--tg-card); }
+      .text-card { color: var(--tg-card); }
+      .border-card { border-color: var(--tg-card); }
+      .ring-card { --tw-ring-color: var(--tg-card); }
+      .bg-card-foreground { background-color: var(--tg-card-foreground); }
+      .text-card-foreground { color: var(--tg-card-foreground); }
+      .border-card-foreground { border-color: var(--tg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--tg-card-foreground); }
+      .bg-popover { background-color: var(--tg-popover); }
+      .text-popover { color: var(--tg-popover); }
+      .border-popover { border-color: var(--tg-popover); }
+      .ring-popover { --tw-ring-color: var(--tg-popover); }
+      .bg-popover-foreground { background-color: var(--tg-popover-foreground); }
+      .text-popover-foreground { color: var(--tg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--tg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--tg-popover-foreground); }
+      .bg-primary { background-color: var(--tg-primary); }
+      .text-primary { color: var(--tg-primary); }
+      .border-primary { border-color: var(--tg-primary); }
+      .ring-primary { --tw-ring-color: var(--tg-primary); }
+      .bg-primary-foreground { background-color: var(--tg-primary-foreground); }
+      .text-primary-foreground { color: var(--tg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--tg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--tg-primary-foreground); }
+      .bg-muted { background-color: var(--tg-muted); }
+      .text-muted { color: var(--tg-muted); }
+      .border-muted { border-color: var(--tg-muted); }
+      .ring-muted { --tw-ring-color: var(--tg-muted); }
+      .bg-muted-foreground { background-color: var(--tg-muted-foreground); }
+      .text-muted-foreground { color: var(--tg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--tg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--tg-muted-foreground); }
+      .bg-border { background-color: var(--tg-border); }
+      .text-border { color: var(--tg-border); }
+      .border-border { border-color: var(--tg-border); }
+      .ring-border { --tw-ring-color: var(--tg-border); }
+      .bg-input { background-color: var(--tg-input); }
+      .text-input { color: var(--tg-input); }
+      .border-input { border-color: var(--tg-input); }
+      .ring-input { --tw-ring-color: var(--tg-input); }
+      .bg-ring { background-color: var(--tg-ring); }
+      .text-ring { color: var(--tg-ring); }
+      .border-ring { border-color: var(--tg-ring); }
+      .ring-ring { --tw-ring-color: var(--tg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Left Sidebar -->
+  <aside class="desktop-sidebar">
+    <!-- Logo Area -->
+    <div class="sidebar-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <span class="sidebar-logo-text">TremorGuard</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-nav-item" data-dom-id="nav-home">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>首页</span>
+      </a>
+      <a href="#" class="sidebar-nav-item active">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span>报告</span>
+      </a>
+      <a href="#" class="sidebar-nav-item" data-dom-id="nav-profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>我的</span>
+      </a>
+    </nav>
+
+    <!-- User Info at Bottom -->
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">张</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name">张秀兰</div>
+        <div class="sidebar-user-status">
+          <span class="green-dot"></span>
+          <span>设备已连接</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="desktop-main">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">我的报告</h1>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="filter-tab active">全部</button>
+      <button class="filter-tab">日报</button>
+      <button class="filter-tab">周报</button>
+      <button class="filter-tab">复诊报告</button>
+    </div>
+
+    <!-- Report Cards List -->
+    <div class="report-list">
+
+      <!-- Report Card 1 -->
+      <div class="report-card">
+        <div class="report-card-left">
+          <div class="report-card-meta">
+            <span class="report-date">7月24日</span>
+            <span class="type-badge">日报</span>
+          </div>
+          <p class="report-summary">震颤强度较昨日下降 12%，整体状态平稳</p>
+        </div>
+        <button class="share-btn" data-dom-id="share-report" aria-label="分享报告">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+      <!-- Report Card 2 -->
+      <div class="report-card">
+        <div class="report-card-left">
+          <div class="report-card-meta">
+            <span class="report-date">7月23日</span>
+            <span class="type-badge">日报</span>
+          </div>
+          <p class="report-summary">下午震颤频率增加，建议关注用药时间</p>
+        </div>
+        <button class="share-btn" data-dom-id="share-report" aria-label="分享报告">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+      <!-- Report Card 3 -->
+      <div class="report-card">
+        <div class="report-card-left">
+          <div class="report-card-meta">
+            <span class="report-date">7月21日</span>
+            <span class="type-badge type-badge--info">周报</span>
+          </div>
+          <p class="report-summary">本周震颤平均强度下降 8%，用药依从率 93%</p>
+        </div>
+        <button class="share-btn" data-dom-id="share-report" aria-label="分享报告">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+      <!-- Report Card 4 -->
+      <div class="report-card">
+        <div class="report-card-left">
+          <div class="report-card-meta">
+            <span class="report-date">7月20日</span>
+            <span class="type-badge">日报</span>
+          </div>
+          <p class="report-summary">运动功能评分较上周提升，步态稳定性改善</p>
+        </div>
+        <button class="share-btn" data-dom-id="share-report" aria-label="分享报告">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+      <!-- Report Card 5 -->
+      <div class="report-card">
+        <div class="report-card-left">
+          <div class="report-card-meta">
+            <span class="report-date">7月15日</span>
+            <span class="type-badge type-badge--success">复诊报告</span>
+          </div>
+          <p class="report-summary">复诊评估：UPDRS 评分 28，较上次下降 3 分</p>
+        </div>
+        <button class="share-btn" data-dom-id="share-report" aria-label="分享报告">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+    <style>
+    body {
+      background: var(--tg-background);
+      min-height: 100vh;
+      max-width: 100%;
+      margin: 0;
+      font-family: var(--tg-font-sans);
+      color: var(--tg-foreground);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---- Left Sidebar ---- */
+    .desktop-sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 240px;
+      background: var(--tg-card);
+      border-right: 1px solid var(--tg-border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      padding: 0;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 28px 24px 32px 24px;
+      border-bottom: 1px solid var(--tg-border);
+    }
+
+    .sidebar-logo-text {
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--tg-radius-md);
+      font-size: var(--tg-text-base);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-neutral-500);
+      text-decoration: none;
+      cursor: pointer;
+      min-height: 44px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sidebar-nav-item:hover {
+      background: var(--tg-muted);
+      color: var(--tg-neutral-700);
+    }
+
+    .sidebar-nav-item.active {
+      background: #F0FDFA;
+      color: var(--tg-primary);
+    }
+
+    .sidebar-nav-item svg {
+      flex-shrink: 0;
+    }
+
+    /* ---- Sidebar User ---- */
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 24px;
+      border-top: 1px solid var(--tg-border);
+    }
+
+    .sidebar-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--tg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tg-primary-foreground);
+      font-size: var(--tg-text-xl);
+      font-weight: var(--tg-weight-bold);
+      flex-shrink: 0;
+    }
+
+    .sidebar-user-info {
+      min-width: 0;
+    }
+
+    .sidebar-user-name {
+      font-size: var(--tg-text-base);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-foreground);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-user-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: var(--tg-text-sm);
+      color: var(--state-success);
+      font-weight: var(--tg-weight-medium);
+    }
+
+    .green-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--state-success);
+      flex-shrink: 0;
+    }
+
+    /* ---- Main Content ---- */
+    .desktop-main {
+      margin-left: 240px;
+      padding: 32px;
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: var(--tg-text-2xl);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-foreground);
+      margin: 0;
+    }
+
+    /* ---- Filter Tabs ---- */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .filter-tab {
+      padding: 10px 20px;
+      border-radius: var(--tg-radius-full);
+      font-size: var(--tg-text-sm);
+      font-weight: var(--tg-weight-medium);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border: none;
+      background: var(--tg-muted);
+      color: var(--tg-muted-foreground);
+    }
+
+    .filter-tab:hover {
+      background: var(--tg-neutral-200);
+    }
+
+    .filter-tab.active {
+      background: var(--tg-primary);
+      color: var(--tg-primary-foreground);
+    }
+
+    .filter-tab.active:hover {
+      background: var(--tg-primary);
+    }
+
+    /* ---- Report Cards ---- */
+    .report-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .report-card {
+      background: var(--tg-card);
+      border-radius: var(--tg-radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--tg-shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.15s;
+      border: 1px solid var(--tg-border);
+    }
+
+    .report-card:hover {
+      box-shadow: var(--tg-shadow-md);
+      border-color: var(--tg-neutral-300);
+    }
+
+    .report-card-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .report-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: var(--tg-text-sm);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-foreground);
+    }
+
+    .type-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 12px;
+      border-radius: var(--tg-radius-full);
+      font-size: 13px;
+      font-weight: var(--tg-weight-medium);
+      background: #F0FDFA;
+      color: var(--tg-primary);
+      white-space: nowrap;
+    }
+
+    .type-badge--info {
+      background: #ECFEFF;
+      color: var(--state-info);
+    }
+
+    .type-badge--success {
+      background: var(--state-success-light);
+      color: var(--state-success);
+    }
+
+    .report-summary {
+      font-size: var(--tg-text-base);
+      color: var(--tg-foreground);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .share-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: var(--tg-radius-md);
+      background: var(--tg-muted);
+      border: none;
+      cursor: pointer;
+      color: var(--tg-muted-foreground);
+      font-size: var(--tg-text-sm);
+      font-weight: var(--tg-weight-medium);
+      min-height: 44px;
+      transition: background 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+
+    .share-btn:hover {
+      background: var(--tg-neutral-200);
+      color: var(--tg-foreground);
+    }
+    </style>
+</body>
+</html>

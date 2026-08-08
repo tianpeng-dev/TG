@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报告详情（桌面端） - TremorGuard</title>
+    <style id="theme-vars">
+:root {
+  --tg-primary: #0F766E;
+  --tg-primary-foreground: #FFFFFF;
+  --tg-primary-light: #14B8A6;
+  --state-success: #059669;
+  --state-success-foreground: #FFFFFF;
+  --state-success-light: #ECFDF5;
+  --state-warning: #D97706;
+  --state-warning-foreground: #FFFFFF;
+  --state-warning-light: #FFFBEB;
+  --state-error: #DC2626;
+  --state-error-foreground: #FFFFFF;
+  --state-error-light: #FEF2F2;
+  --state-info: #0891B2;
+  --tg-neutral-50: #F8F9FB;
+  --tg-neutral-100: #F1F3F5;
+  --tg-neutral-200: #E5E7EB;
+  --tg-neutral-300: #D1D5DB;
+  --tg-neutral-400: #9CA3AF;
+  --tg-neutral-500: #6B7280;
+  --tg-neutral-600: #4B5563;
+  --tg-neutral-700: #374151;
+  --tg-neutral-800: #1F2937;
+  --tg-neutral-900: #1A1D23;
+  --tg-background: #F8F9FB;
+  --tg-foreground: #1A1D23;
+  --tg-card: #FFFFFF;
+  --tg-muted: #F1F3F5;
+  --tg-muted-foreground: #6B7280;
+  --tg-border: #E5E7EB;
+  --tg-ring: #0F766E;
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 12px;
+  --tg-radius-lg: 16px;
+  --tg-radius-full: 9999px;
+  --tg-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --tg-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --tg-shadow-floating: 0 8px 24px rgba(0,0,0,0.08);
+  --tg-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --tg-text-sm: 14px;
+  --tg-text-base: 16px;
+  --tg-text-lg: 18px;
+  --tg-text-xl: 20px;
+  --tg-text-2xl: 24px;
+  --tg-weight-regular: 400;
+  --tg-weight-medium: 500;
+  --tg-weight-bold: 700;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--tg-background);
+    --color-foreground: var(--tg-foreground);
+    --color-card: var(--tg-card);
+    --color-card-foreground: var(--tg-card-foreground);
+    --color-popover: var(--tg-popover);
+    --color-popover-foreground: var(--tg-popover-foreground);
+    --color-primary: var(--tg-primary);
+    --color-primary-foreground: var(--tg-primary-foreground);
+    --color-muted: var(--tg-muted);
+    --color-muted-foreground: var(--tg-muted-foreground);
+    --color-border: var(--tg-border);
+    --color-input: var(--tg-input);
+    --color-ring: var(--tg-ring);
+    --radius-sm: var(--tg-radius-sm);
+    --radius-md: var(--tg-radius-md);
+    --radius-lg: var(--tg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--tg-background); color: var(--tg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--tg-background); }
+      .text-background { color: var(--tg-background); }
+      .border-background { border-color: var(--tg-background); }
+      .ring-background { --tw-ring-color: var(--tg-background); }
+      .bg-foreground { background-color: var(--tg-foreground); }
+      .text-foreground { color: var(--tg-foreground); }
+      .border-foreground { border-color: var(--tg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--tg-foreground); }
+      .bg-card { background-color: var(--tg-card); }
+      .text-card { color: var(--tg-card); }
+      .border-card { border-color: var(--tg-card); }
+      .ring-card { --tw-ring-color: var(--tg-card); }
+      .bg-card-foreground { background-color: var(--tg-card-foreground); }
+      .text-card-foreground { color: var(--tg-card-foreground); }
+      .border-card-foreground { border-color: var(--tg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--tg-card-foreground); }
+      .bg-popover { background-color: var(--tg-popover); }
+      .text-popover { color: var(--tg-popover); }
+      .border-popover { border-color: var(--tg-popover); }
+      .ring-popover { --tw-ring-color: var(--tg-popover); }
+      .bg-popover-foreground { background-color: var(--tg-popover-foreground); }
+      .text-popover-foreground { color: var(--tg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--tg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--tg-popover-foreground); }
+      .bg-primary { background-color: var(--tg-primary); }
+      .text-primary { color: var(--tg-primary); }
+      .border-primary { border-color: var(--tg-primary); }
+      .ring-primary { --tw-ring-color: var(--tg-primary); }
+      .bg-primary-foreground { background-color: var(--tg-primary-foreground); }
+      .text-primary-foreground { color: var(--tg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--tg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--tg-primary-foreground); }
+      .bg-muted { background-color: var(--tg-muted); }
+      .text-muted { color: var(--tg-muted); }
+      .border-muted { border-color: var(--tg-muted); }
+      .ring-muted { --tw-ring-color: var(--tg-muted); }
+      .bg-muted-foreground { background-color: var(--tg-muted-foreground); }
+      .text-muted-foreground { color: var(--tg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--tg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--tg-muted-foreground); }
+      .bg-border { background-color: var(--tg-border); }
+      .text-border { color: var(--tg-border); }
+      .border-border { border-color: var(--tg-border); }
+      .ring-border { --tw-ring-color: var(--tg-border); }
+      .bg-input { background-color: var(--tg-input); }
+      .text-input { color: var(--tg-input); }
+      .border-input { border-color: var(--tg-input); }
+      .ring-input { --tw-ring-color: var(--tg-input); }
+      .bg-ring { background-color: var(--tg-ring); }
+      .text-ring { color: var(--tg-ring); }
+      .border-ring { border-color: var(--tg-ring); }
+      .ring-ring { --tw-ring-color: var(--tg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <!-- Logo -->
+    <div class="sidebar__logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <rect x="6" y="6" width="12" height="12" rx="3" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+        <path d="M10 6V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M10 18v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="12" cy="12" r="2" fill="#FFFFFF"/>
+      </svg>
+      <span class="sidebar__logo-text">TremorGuard</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar__nav">
+      <a href="#" class="sidebar__nav-item sidebar__nav-item--inactive">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-4 0a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span>首页</span>
+      </a>
+      <a href="#" class="sidebar__nav-item sidebar__nav-item--inactive">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H7v0h2M9 5v0a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h2v0M9 5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <line x1="9" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>报告</span>
+      </a>
+      <a href="#" class="sidebar__nav-item sidebar__nav-item--inactive">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M4 21v-1a6 6 0 0 1 12 0v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span>我的</span>
+      </a>
+    </nav>
+
+    <!-- User info at bottom -->
+    <div class="sidebar__user">
+      <div class="sidebar__user-avatar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+          <path d="M4 21v-1a6 6 0 0 1 12 0v1" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="sidebar__user-info">
+        <span class="sidebar__user-name">张秀兰</span>
+        <span class="sidebar__user-status">
+          <span class="sidebar__user-status-dot"></span>
+          设备已连接
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <button class="page-header__back" data-dom-id="back-home" aria-label="返回首页">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="var(--tg-foreground)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="page-header__title">今日报告</h1>
+    </div>
+
+    <!-- Report Card -->
+    <div class="report-card">
+
+      <!-- Conclusion -->
+      <p class="report-conclusion">本周震颤强度下降 18%，整体状况良好</p>
+
+      <!-- Three Key Metrics -->
+      <div class="metrics-row">
+        <div class="metric-block">
+          <span class="metric-value">2.1</span>
+          <span class="metric-label">日均发作次数</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric-block">
+          <span class="metric-value metric-value--success">&darr;18%</span>
+          <span class="metric-label">震颤强度变化</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric-block">
+          <span class="metric-value">6.2h</span>
+          <span class="metric-label">日均有效控制</span>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <div class="chart-section">
+        <p class="chart-title">7 日震颤趋势</p>
+        <div class="chart-container">
+          <svg class="chart-svg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet" aria-label="7日震颤趋势折线图" role="img">
+            <defs>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0F766E" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#F0FDFA" stop-opacity="0.05"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Y-axis reference lines -->
+            <line x1="60" y1="40" x2="610" y2="40" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="100" x2="610" y2="100" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="160" x2="610" y2="160" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="220" x2="610" y2="220" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="260" x2="610" y2="260" stroke="#E5E7EB" stroke-width="1"/>
+
+            <!-- Y-axis labels -->
+            <text x="50" y="45" fill="#6B7280" font-size="13" text-anchor="end">高</text>
+            <text x="50" y="105" fill="#6B7280" font-size="13" text-anchor="end">中高</text>
+            <text x="50" y="165" fill="#6B7280" font-size="13" text-anchor="end">中</text>
+            <text x="50" y="225" fill="#6B7280" font-size="13" text-anchor="end">低</text>
+
+            <!-- Area fill under line -->
+            <polygon points="
+              120,80
+              200,100
+              280,65
+              360,125
+              440,150
+              520,180
+              580,195
+              580,260
+              120,260
+            " fill="url(#chartFill)"/>
+
+            <!-- Trend line -->
+            <polyline
+              points="120,80 200,100 280,65 360,125 440,150 520,180 580,195"
+              fill="none"
+              stroke="#0F766E"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <!-- Data points -->
+            <circle cx="120" cy="80" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="200" cy="100" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="280" cy="65" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="360" cy="125" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="440" cy="150" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="520" cy="180" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+            <circle cx="580" cy="195" r="5" fill="#FFFFFF" stroke="#0F766E" stroke-width="2.5"/>
+
+            <!-- X-axis labels -->
+            <text x="120" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周一</text>
+            <text x="200" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周二</text>
+            <text x="280" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周三</text>
+            <text x="360" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周四</text>
+            <text x="440" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周五</text>
+            <text x="520" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周六</text>
+            <text x="580" y="280" fill="#6B7280" font-size="13" text-anchor="middle">周日</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Medication Adherence -->
+      <div class="medication-section">
+        <p class="medication-title">用药依从性</p>
+        <div class="dose-dots">
+          <!-- 3 taken (green) -->
+          <div class="dose-dot dose-dot--taken" aria-label="已服药"></div>
+          <div class="dose-dot dose-dot--taken" aria-label="已服药"></div>
+          <div class="dose-dot dose-dot--taken" aria-label="已服药"></div>
+          <!-- 1 late (amber) -->
+          <div class="dose-dot dose-dot--late" aria-label="延迟服药"></div>
+          <!-- 1 missed (gray) -->
+          <div class="dose-dot dose-dot--missed" aria-label="漏服"></div>
+        </div>
+        <p class="dose-dot-label">本周服药率 87%</p>
+      </div>
+
+      <!-- Expand More Button -->
+      <button class="btn-expand" data-dom-id="expand-more" type="button">
+        展开更多
+        <svg class="btn-expand__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke="#0F766E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Share Button -->
+    <button class="btn-share" data-dom-id="share-doctor" type="button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="18" cy="5" r="3" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+        <circle cx="6" cy="12" r="3" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+        <circle cx="18" cy="19" r="3" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      分享给医生
+    </button>
+  </main>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--tg-background);
+      min-height: 100vh;
+      max-width: 100%;
+      margin: 0;
+      font-family: var(--tg-font-sans);
+      color: var(--tg-foreground);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 240px;
+      background: var(--tg-card);
+      border-right: 1px solid var(--tg-border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      box-shadow: var(--tg-shadow-sm);
+    }
+
+    .sidebar__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 28px 24px 32px;
+      background: var(--tg-primary);
+    }
+
+    .sidebar__logo-text {
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-primary-foreground);
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar__nav {
+      flex: 1;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar__nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--tg-radius-md);
+      text-decoration: none;
+      font-size: var(--tg-text-base);
+      font-weight: var(--tg-weight-medium);
+      transition: background-color 0.15s ease, color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .sidebar__nav-item--inactive {
+      color: var(--tg-muted-foreground);
+    }
+
+    .sidebar__nav-item--inactive:hover {
+      background: var(--tg-muted);
+      color: var(--tg-foreground);
+    }
+
+    .sidebar__nav-item--active {
+      background: rgba(15, 118, 110, 0.08);
+      color: var(--tg-primary);
+    }
+
+    .sidebar__nav-item--active:hover {
+      background: rgba(15, 118, 110, 0.12);
+    }
+
+    .sidebar__user {
+      padding: 20px 20px 28px;
+      border-top: 1px solid var(--tg-border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sidebar__user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--tg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar__user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .sidebar__user-name {
+      font-size: var(--tg-text-base);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-foreground);
+    }
+
+    .sidebar__user-status {
+      font-size: var(--tg-text-sm);
+      color: var(--tg-muted-foreground);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sidebar__user-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--state-success);
+      flex-shrink: 0;
+    }
+
+    /* ===== Main Content ===== */
+    .main-content {
+      margin-left: 240px;
+      padding: 32px;
+    }
+
+    /* ===== Page Header ===== */
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .page-header__back {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: var(--tg-radius-md);
+      transition: background-color 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .page-header__back:hover {
+      background: var(--tg-muted);
+    }
+
+    .page-header__title {
+      font-size: var(--tg-text-2xl);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-foreground);
+    }
+
+    /* ===== Report Card ===== */
+    .report-card {
+      background: var(--tg-card);
+      border-radius: var(--tg-radius-lg);
+      padding: 40px;
+      box-shadow: var(--tg-shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    /* ===== Conclusion ===== */
+    .report-conclusion {
+      text-align: center;
+      font-size: var(--tg-text-xl);
+      font-weight: var(--tg-weight-bold);
+      color: var(--tg-primary);
+      line-height: 1.5;
+      padding-bottom: 32px;
+    }
+
+    /* ===== Metrics Row ===== */
+    .metrics-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+      border-top: 1px solid var(--tg-border);
+      border-bottom: 1px solid var(--tg-border);
+    }
+
+    .metric-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4px 0;
+    }
+
+    .metric-divider {
+      width: 1px;
+      height: 56px;
+      background-color: var(--tg-neutral-200);
+      flex-shrink: 0;
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: var(--tg-weight-bold);
+      line-height: 1.2;
+      color: var(--tg-primary);
+    }
+
+    .metric-value--success {
+      color: var(--state-success);
+    }
+
+    .metric-label {
+      font-size: var(--tg-text-sm);
+      font-weight: var(--tg-weight-regular);
+      color: var(--tg-muted-foreground);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    /* ===== Chart Section ===== */
+    .chart-section {
+      padding: 28px 0 0;
+      border-bottom: 1px solid var(--tg-border);
+    }
+
+    .chart-title {
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-foreground);
+      margin-bottom: 16px;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      background-color: var(--tg-card);
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== Medication Adherence ===== */
+    .medication-section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--tg-border);
+    }
+
+    .medication-title {
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-foreground);
+      margin-bottom: 20px;
+    }
+
+    .dose-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .dose-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dose-dot--taken {
+      background-color: var(--state-success);
+    }
+
+    .dose-dot--late {
+      background-color: var(--state-warning);
+    }
+
+    .dose-dot--missed {
+      background-color: var(--tg-neutral-300);
+    }
+
+    .dose-dot-label {
+      width: 100%;
+      text-align: center;
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-primary);
+    }
+
+    /* ===== Buttons ===== */
+    .btn-expand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 48px;
+      padding: 0 24px;
+      background-color: var(--tg-card);
+      color: var(--tg-primary);
+      border: 2px solid var(--tg-primary);
+      border-radius: var(--tg-radius-md);
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-medium);
+      cursor: pointer;
+      font-family: var(--tg-font-sans);
+      margin-top: 24px;
+      gap: 8px;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-expand:hover {
+      background: rgba(15, 118, 110, 0.06);
+    }
+
+    .btn-expand:active {
+      opacity: 0.8;
+    }
+
+    .btn-expand__arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-share {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 52px;
+      background: var(--tg-primary);
+      color: var(--tg-primary-foreground);
+      border: none;
+      border-radius: var(--tg-radius-md);
+      font-size: var(--tg-text-lg);
+      font-weight: var(--tg-weight-bold);
+      font-family: var(--tg-font-sans);
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-share:hover {
+      background: #0D6560;
+    }
+
+    .btn-share:active {
+      opacity: 0.9;
+    }
+  </style>
+</body>
+</html>

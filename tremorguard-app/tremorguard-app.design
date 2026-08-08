@@ -1,0 +1,398 @@
+{
+  "data": [
+    {
+      "id": "page-home",
+      "title": "AI 对话首页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 0,
+        "y": 1734,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/home.html",
+        "interactions": [
+          {
+            "domId": "tab-reports",
+            "targetPageId": "page-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "tab-profile",
+            "targetPageId": "page-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-reports",
+      "title": "报告列表",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/reports.html",
+        "interactions": [
+          {
+            "domId": "tab-home",
+            "targetPageId": "page-home",
+            "hideEdge": true,
+            "transitionLabel": "切换到首页"
+          },
+          {
+            "domId": "tab-profile",
+            "targetPageId": "page-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          },
+          {
+            "domId": "share-report",
+            "targetPageId": "page-share-sheet",
+            "transitionLabel": "分享报告"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-profile",
+      "title": "个人中心",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 0,
+        "y": 578,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/profile.html",
+        "interactions": [
+          {
+            "domId": "tab-home",
+            "targetPageId": "page-home",
+            "hideEdge": true,
+            "transitionLabel": "切换到首页"
+          },
+          {
+            "domId": "tab-reports",
+            "targetPageId": "page-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "nav-medication",
+            "targetPageId": "page-medication",
+            "transitionLabel": "用药管理"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-medication",
+      "title": "用药管理",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 433,
+        "y": 578,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/medication.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-report-detail",
+      "title": "报告详情展开",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 0,
+        "y": 289,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/report-detail.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "hideEdge": true,
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "share-doctor",
+            "targetPageId": "page-share-sheet",
+            "transitionLabel": "分享给医生"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-share-sheet",
+      "title": "报告分享面板",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 433,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/share-sheet.html",
+        "interactions": [
+          {
+            "domId": "sheet-backdrop",
+            "targetPageId": "page-report-detail",
+            "hideEdge": true,
+            "transitionLabel": "关闭分享面板"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-home-states",
+      "title": "首页交互态",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784883702000,
+      "canvasData": {
+        "x": 433,
+        "y": 1734,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/home-states.html",
+        "interactions": [
+          {
+            "domId": "tab-reports",
+            "targetPageId": "page-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "tab-profile",
+            "targetPageId": "page-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-home",
+      "title": "AI 对话首页（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 864,
+        "y": 1740,
+        "group": 1,
+        "deviceType": "desktop"
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-home.html",
+        "interactions": [
+          {
+            "domId": "nav-reports",
+            "targetPageId": "page-desktop-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "nav-profile",
+            "targetPageId": "page-desktop-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-home-states",
+      "title": "首页交互态（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 1299,
+        "y": 1734,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-home-states.html",
+        "interactions": [
+          {
+            "domId": "nav-reports",
+            "targetPageId": "page-desktop-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "nav-profile",
+            "targetPageId": "page-desktop-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-reports",
+      "title": "报告列表（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 0,
+        "y": 867,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-reports.html",
+        "interactions": [
+          {
+            "domId": "nav-home",
+            "targetPageId": "page-desktop-home",
+            "hideEdge": true,
+            "transitionLabel": "切换到首页"
+          },
+          {
+            "domId": "nav-profile",
+            "targetPageId": "page-desktop-profile",
+            "hideEdge": true,
+            "transitionLabel": "切换到我的"
+          },
+          {
+            "domId": "share-report",
+            "targetPageId": "page-desktop-share-sheet",
+            "transitionLabel": "分享报告"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-profile",
+      "title": "个人中心（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 0,
+        "y": 1445,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-profile.html",
+        "interactions": [
+          {
+            "domId": "nav-home",
+            "targetPageId": "page-desktop-home",
+            "hideEdge": true,
+            "transitionLabel": "切换到首页"
+          },
+          {
+            "domId": "nav-reports",
+            "targetPageId": "page-desktop-reports",
+            "hideEdge": true,
+            "transitionLabel": "切换到报告"
+          },
+          {
+            "domId": "nav-medication",
+            "targetPageId": "page-desktop-medication",
+            "transitionLabel": "用药管理"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-medication",
+      "title": "用药管理（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 433,
+        "y": 1445,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-medication.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-desktop-report-detail",
+      "title": "报告详情（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 0,
+        "y": 1156,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-report-detail.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-desktop-home",
+            "hideEdge": true,
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "share-doctor",
+            "targetPageId": "page-desktop-share-sheet",
+            "transitionLabel": "分享给医生"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-desktop-share-sheet",
+      "title": "报告分享面板（桌面端）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1784967735000,
+      "canvasData": {
+        "x": 433,
+        "y": 867,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/desktop-share-sheet.html",
+        "interactions": [
+          {
+            "domId": "sheet-backdrop",
+            "targetPageId": "page-desktop-report-detail",
+            "hideEdge": true,
+            "transitionLabel": "关闭分享面板"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "freeSize",
+    "projectName": "TremorGuard 帕金森监测 App",
+    "showEdge": false,
+    "visualEditorEnabled": true
+  }
+}

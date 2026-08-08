@@ -1,0 +1,9 @@
+/* TremorGuard Doctor Dashboard - 临时样式 */
+@import '@tremorguard/ui-theme/src/tokens.css';
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--tg-color-background);
+  color: var(--tg-color-ink);
+}

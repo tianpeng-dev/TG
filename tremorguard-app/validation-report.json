@@ -1,0 +1,397 @@
+{
+  "success": true,
+  "outcome": "validation_passed",
+  "repairable": true,
+  "terminalViolations": [],
+  "terminalBlockingSummary": null,
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "2026.07.22.00.00.00",
+    "version_source": "skill-release-manifest.json",
+    "runtime_skill_dir": null,
+    "recorded_at": null,
+    "expected_version": "2026.07.22.00.00.00",
+    "status": "matched",
+    "read_status": "loaded"
+  },
+  "operatingMode": "free-explore",
+  "renderBlockingErrorCount": 6,
+  "softWarningCount": 10,
+  "renderBlockingErrors": [
+    "[design-file] Validation failed for .design file batch: ========================================\n[FAIL] Validation failed\n----------------------------------------\nFound 14 issues:\n\n  1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug}\n  2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\"\n  3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug}\n  4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\"\n  5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug}\n  6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\"\n  7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug}\n  8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\"\n  9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug}\n  10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\"\n  11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug}\n  12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\"\n  13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug}\n  14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\"\n\n========================================\n",
+    "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+    "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments."
+  ],
+  "errorSignatures": [
+    {
+      "errorClass": "artifact-readiness",
+      "normalized": "[design-file] Validation failed for .design file batch: ======================================== [FAIL] Validation failed ---------------------------------------- Found 14 issues: 1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug} 2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\" 3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug} 4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\" 5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug} 6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\" 7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug} 8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\" 9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug} 10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\" 11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug} 12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\" 13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug} 14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\" ========================================",
+      "signature": "be0064dd5c9de9ebb4f03ac594fd01a605511fe37a4bd75277f988921b25471e"
+    },
+    {
+      "errorClass": "artifact-readiness",
+      "normalized": "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+      "signature": "cde6070875c6f57dc23ec9b86f8451f0255c94d3df930d03d7dd567edea0a453"
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "normalized": "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "signature": "721cdd454e6f152d25494685d0d571b3781afd47ecf8609886f39d8b39243677"
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "normalized": "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "signature": "1266cf6c93c04b724c6e245c08d51c96d6e199db08ddc8414ac6cfcfc658a692"
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "normalized": "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "signature": "db70c775b67f7471da4ce582a7db27e7afd428098daac753b4aa53b5ea3b62fb"
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "normalized": "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "signature": "40c8c527a6c20c40c7175f4ed2a38acf5802b93bd950533128b6a7b716e8898b"
+    }
+  ],
+  "softWarnings": [
+    "[repair-ledger] validationRepairLedger[0].repairActions[0].preEditFileHashes[] is missing (legacy optional evidence)",
+    "[repair-ledger] validationRepairLedger[0].repairActions[0].postEditFileHashes[] is missing (legacy optional evidence)",
+    "[repair-ledger] validationRepairLedger[0].revalidationReportPath is missing",
+    "[repair-ledger] validationRepairLedger[0].revalidationReportHash is missing",
+    "[repair-ledger] validationRepairLedger[0].revalidationSuccess should be a boolean",
+    "[mobile-navigation-consistency] 11 mobile page(s) do not expose a 3+ item data-nav-key nav cluster while sibling pages do. This is acceptable for detail/reward/modal pages only when planned explicitly.",
+    "[html-quality] medication.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] profile.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] reports.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] reports.html: free-explore pages must not use secondary/accent brand variables. Use the single primary hue, neutral tints, or --state-success/warning/error/info for real semantic states."
+  ],
+  "repairPlanHints": [
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "owner": "main-agent",
+      "repairScope": "all-pages-with-mobile-nav",
+      "strategy": "run_repair_mobile_navigation_once",
+      "affectedFiles": [
+        "pages/home.html"
+      ],
+      "repairReportPath": "mobile-nav-repair-report.json",
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 3
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "owner": "main-agent",
+      "repairScope": "all-pages-with-mobile-nav",
+      "strategy": "run_repair_mobile_navigation_once",
+      "affectedFiles": [
+        "pages/home-states.html"
+      ],
+      "repairReportPath": "mobile-nav-repair-report.json",
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 3
+    },
+    {
+      "errorClass": "mobile-navigation-consistency",
+      "owner": "main-agent",
+      "repairScope": "all-pages-with-mobile-nav",
+      "strategy": "run_repair_mobile_navigation_once",
+      "affectedFiles": [
+        "pages/desktop/profile.html"
+      ],
+      "repairReportPath": "mobile-nav-repair-report.json",
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 3
+    },
+    {
+      "errorClass": "hardcoded-color-in-body",
+      "owner": "sub-agent",
+      "repairScope": "targeted-token-replace",
+      "strategy": "targeted_token_replace_once",
+      "affectedFiles": [
+        "medication.html"
+      ],
+      "repairReportPath": null,
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 2
+    },
+    {
+      "errorClass": "hardcoded-color-in-body",
+      "owner": "sub-agent",
+      "repairScope": "targeted-token-replace",
+      "strategy": "targeted_token_replace_once",
+      "affectedFiles": [
+        "profile.html"
+      ],
+      "repairReportPath": null,
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 2
+    },
+    {
+      "errorClass": "hardcoded-color-in-body",
+      "owner": "sub-agent",
+      "repairScope": "targeted-token-replace",
+      "strategy": "targeted_token_replace_once",
+      "affectedFiles": [
+        "reports.html"
+      ],
+      "repairReportPath": null,
+      "repairAlreadyAttempted": false,
+      "allowSourceRead": "no-full-html-read",
+      "maxValidationRuns": 2
+    }
+  ],
+  "repairActionTable": [
+    {
+      "error": "[design-file] Validation failed for .design file batch: ========================================\n[FAIL] Validation failed\n----------------------------------------\nFound 14 issues:\n\n  1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug}\n  2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\"\n  3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug}\n  4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\"\n  5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug}\n  6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\"\n  7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug}\n  8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\"\n  9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug}\n  10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\"\n  11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug}\n  12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\"\n  13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug}\n  14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\"\n\n========================================\n",
+      "errorClass": "artifact-readiness",
+      "severity": "blocking",
+      "action": "repair_design_registration_or_file_reference_only",
+      "owner": "main-agent",
+      "sourceReadPolicy": "read .design and affected file metadata only"
+    },
+    {
+      "error": "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+      "errorClass": "artifact-readiness",
+      "severity": "blocking",
+      "action": "repair_design_registration_or_file_reference_only",
+      "owner": "main-agent",
+      "sourceReadPolicy": "read .design and affected file metadata only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    }
+  ],
+  "errorCount": 6,
+  "warningCount": 10,
+  "errors": [
+    "[design-file] Validation failed for .design file batch: ========================================\n[FAIL] Validation failed\n----------------------------------------\nFound 14 issues:\n\n  1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug}\n  2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\"\n  3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug}\n  4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\"\n  5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug}\n  6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\"\n  7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug}\n  8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\"\n  9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug}\n  10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\"\n  11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug}\n  12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\"\n  13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug}\n  14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\"\n\n========================================\n",
+    "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+    "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+    "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments."
+  ],
+  "warnings": [
+    "[repair-ledger] validationRepairLedger[0].repairActions[0].preEditFileHashes[] is missing (legacy optional evidence)",
+    "[repair-ledger] validationRepairLedger[0].repairActions[0].postEditFileHashes[] is missing (legacy optional evidence)",
+    "[repair-ledger] validationRepairLedger[0].revalidationReportPath is missing",
+    "[repair-ledger] validationRepairLedger[0].revalidationReportHash is missing",
+    "[repair-ledger] validationRepairLedger[0].revalidationSuccess should be a boolean",
+    "[mobile-navigation-consistency] 11 mobile page(s) do not expose a 3+ item data-nav-key nav cluster while sibling pages do. This is acceptable for detail/reward/modal pages only when planned explicitly.",
+    "[html-quality] medication.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] profile.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] reports.html: hardcoded colors are forbidden outside <style id=\"theme-vars\">. Use brand CSS variables from the token reference.",
+    "[html-quality] reports.html: free-explore pages must not use secondary/accent brand variables. Use the single primary hue, neutral tints, or --state-success/warning/error/info for real semantic states."
+  ],
+  "validationRunDisciplineStatus": {
+    "declared": true,
+    "restoreMode": false,
+    "maxFullValidationRuns": null,
+    "validationHistoryCount": 1,
+    "repairLedgerCount": 1,
+    "softWarningsTriggerRepair": null,
+    "terminalState": null,
+    "nextAction": null,
+    "violations": [],
+    "success": true
+  },
+  "terminalState": null,
+  "nextCheck": {
+    "type": "full",
+    "command": "node '/Users/peng/.trae-cn/builtin/design/hebe/skills/solo-design/shared-runtime/deterministic-tooling/validate-design-workspace.mjs' '/Users/peng/Documents/trae_projects/TremorGuard/tremorguard-app' --report-json='/Users/peng/Documents/trae_projects/TremorGuard/tremorguard-app/validation-report.json'",
+    "fullValidationAllowed": true,
+    "reason": "no narrower deterministic targeted check is available for the current failure class"
+  },
+  "repairBatch": [
+    {
+      "error": "[design-file] Validation failed for .design file batch: ========================================\n[FAIL] Validation failed\n----------------------------------------\nFound 14 issues:\n\n  1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug}\n  2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\"\n  3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug}\n  4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\"\n  5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug}\n  6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\"\n  7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug}\n  8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\"\n  9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug}\n  10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\"\n  11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug}\n  12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\"\n  13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug}\n  14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\"\n\n========================================\n",
+      "errorClass": "artifact-readiness",
+      "severity": "blocking",
+      "action": "repair_design_registration_or_file_reference_only",
+      "owner": "main-agent",
+      "sourceReadPolicy": "read .design and affected file metadata only"
+    },
+    {
+      "error": "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+      "errorClass": "artifact-readiness",
+      "severity": "blocking",
+      "action": "repair_design_registration_or_file_reference_only",
+      "owner": "main-agent",
+      "sourceReadPolicy": "read .design and affected file metadata only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    },
+    {
+      "error": "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "errorClass": "unknown-blocking",
+      "severity": "blocking",
+      "action": "read validation report, classify owner, then use the narrowest targeted repair",
+      "owner": "main-agent",
+      "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+    }
+  ],
+  "repairContextPacket": {
+    "schema_version": "1.0",
+    "purpose": "small-context repair packet; read this before full validation-report.json",
+    "success": true,
+    "terminalState": null,
+    "skillProvenance": {
+      "name": "solo-design",
+      "version": "2026.07.22.00.00.00",
+      "version_source": "skill-release-manifest.json",
+      "runtime_skill_dir": null,
+      "recorded_at": null,
+      "expected_version": "2026.07.22.00.00.00",
+      "status": "matched",
+      "read_status": "loaded"
+    },
+    "renderBlockingErrorCount": 6,
+    "softWarningCount": 10,
+    "renderBlockingErrors": [
+      "[design-file] Validation failed for .design file batch: ========================================\n[FAIL] Validation failed\n----------------------------------------\nFound 14 issues:\n\n  1. [data[7].id] invalid page id \"desktop-home\", expected page-{slug}\n  2. [data[7].id] must match htmlSrc slug, expected \"page-desktop/home\" or \"page-desktop/home-<n>\", got \"desktop-home\"\n  3. [data[8].id] invalid page id \"desktop-home-states\", expected page-{slug}\n  4. [data[8].id] must match htmlSrc slug, expected \"page-desktop/home-states\" or \"page-desktop/home-states-<n>\", got \"desktop-home-states\"\n  5. [data[9].id] invalid page id \"desktop-reports\", expected page-{slug}\n  6. [data[9].id] must match htmlSrc slug, expected \"page-desktop/reports\" or \"page-desktop/reports-<n>\", got \"desktop-reports\"\n  7. [data[10].id] invalid page id \"desktop-profile\", expected page-{slug}\n  8. [data[10].id] must match htmlSrc slug, expected \"page-desktop/profile\" or \"page-desktop/profile-<n>\", got \"desktop-profile\"\n  9. [data[11].id] invalid page id \"desktop-medication\", expected page-{slug}\n  10. [data[11].id] must match htmlSrc slug, expected \"page-desktop/medication\" or \"page-desktop/medication-<n>\", got \"desktop-medication\"\n  11. [data[12].id] invalid page id \"desktop-report-detail\", expected page-{slug}\n  12. [data[12].id] must match htmlSrc slug, expected \"page-desktop/report-detail\" or \"page-desktop/report-detail-<n>\", got \"desktop-report-detail\"\n  13. [data[13].id] invalid page id \"desktop-share-sheet\", expected page-{slug}\n  14. [data[13].id] must match htmlSrc slug, expected \"page-desktop/share-sheet\" or \"page-desktop/share-sheet-<n>\", got \"desktop-share-sheet\"\n\n========================================\n",
+      "[device-type-consistency] orchestration-summary project.deviceType=\"mobile\" does not match .design config.deviceType=\"freeSize\". Fix .design config before final delivery.",
+      "[mobile-navigation-consistency] pages/home.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "[mobile-navigation-consistency] pages/home-states.html: mobile nav labels must include whitespace-nowrap/truncate so Chinese tab labels do not wrap. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "[mobile-navigation-consistency] pages/desktop/profile.html: mobile nav cluster is only detectable from data-dom-id/id. Add stable data-nav-key=\"<key>\" to every tab item; data-dom-id is only for click wiring and must not define active-state structure. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments.",
+      "[mobile-navigation-consistency] mobile pages with global nav must keep the same data-nav-key item order, positioning, height, and structural geometry. pages/home.html: home|reports|profile::flow::auto::tag=button::item=bottom-nav__tab.bottom-nav__tab--active|bottom-nav__tab.bottom-nav__tab--inactive::icon=::nowrap=false::grid=none::max=false::full=false/false; pages/desktop/profile.html: home|reports|medication::flow::auto::tag=::item=::icon=::nowrap=false::grid=none::max=false::full=false/false. Use data-dom-id only for click wiring. Repair: rebuild the Page Packet with Mobile Navigation Contract and copy canonicalNavHtml. If this is post-validation repair, run repair-mobile-navigation-flow.mjs once; do not patch individual span/data-dom-id/class fragments."
+    ],
+    "repairActionTable": [
+      {
+        "errorClass": "artifact-readiness",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "repair_design_registration_or_file_reference_only",
+        "affectedFiles": [],
+        "sourceReadPolicy": "read .design and affected file metadata only"
+      },
+      {
+        "errorClass": "artifact-readiness",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "repair_design_registration_or_file_reference_only",
+        "affectedFiles": [],
+        "sourceReadPolicy": "read .design and affected file metadata only"
+      },
+      {
+        "errorClass": "unknown-blocking",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "read validation report, classify owner, then use the narrowest targeted repair",
+        "affectedFiles": [],
+        "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+      },
+      {
+        "errorClass": "unknown-blocking",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "read validation report, classify owner, then use the narrowest targeted repair",
+        "affectedFiles": [],
+        "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+      },
+      {
+        "errorClass": "unknown-blocking",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "read validation report, classify owner, then use the narrowest targeted repair",
+        "affectedFiles": [],
+        "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+      },
+      {
+        "errorClass": "unknown-blocking",
+        "owner": "main-agent",
+        "severity": "blocking",
+        "action": "read validation report, classify owner, then use the narrowest targeted repair",
+        "affectedFiles": [],
+        "sourceReadPolicy": "no validator source read; targeted affected-file excerpt only"
+      }
+    ],
+    "nextCheck": {
+      "type": "full",
+      "command": "node '/Users/peng/.trae-cn/builtin/design/hebe/skills/solo-design/shared-runtime/deterministic-tooling/validate-design-workspace.mjs' '/Users/peng/Documents/trae_projects/TremorGuard/tremorguard-app' --report-json='/Users/peng/Documents/trae_projects/TremorGuard/tremorguard-app/validation-report.json'",
+      "fullValidationAllowed": true,
+      "reason": "no narrower deterministic targeted check is available for the current failure class"
+    },
+    "forbidden": [
+      "do not read validator source",
+      "do not rerun full validation when nextCheck.fullValidationAllowed=false",
+      "do not start preview/browser unless user explicitly asks",
+      "do not hand-edit repair ledger fields"
+    ]
+  },
+  "projectFileHashes": {
+    "tremorguard-app.design": "66c9a208ff760941e79491f28e98cd119eb118ea1172446a70e54b4659364e5f",
+    "colors_and_type.css": "1010adb74931e606eb62cb2f46bfb645043195b04fb3c042afca20653a095ee3",
+    "runtime-orchestration-summary.json": "f49bf47a31dc46e0a1e1e08230e2524c33442181131bea271f8641360847c88b",
+    "pages/home-states.html": "eceb880fc18f6afd7f7f674c8bd52770bec415f5d0189f966f5e76687eb3a2a4",
+    "pages/home.html": "f453a97eab18b1d2b69e2eaa086ee2d2303cbfe1cd45943e26668d8cf69d1c14",
+    "pages/medication.html": "63a73a5d630301e5596650560a1fc3d253dc80fd257f751328dbd45ffc13d4ab",
+    "pages/profile.html": "9ee2221ae2edf1edfb996bc31a43de2b883cbfca6f5fa23591d44ecc8199c995",
+    "pages/report-detail.html": "fc6bc3555e22f397b053669446c9a98c30c86dcfd6617f0b538bf3bf75b5029d",
+    "pages/reports.html": "c9fbf3c93986d3c928a9ff9c7d77f78f722bbde02f6aae0c5c5ea310c8a8a10c",
+    "pages/share-sheet.html": "4e23a7eed28fa4c8b7a5034f98f3449a718b266a3d20b7c4b3992f3b5f5ec464"
+  },
+  "designDir": "/Users/peng/Documents/trae_projects/TremorGuard/tremorguard-app",
+  "expectedPages": 14,
+  "requireInteractions": null,
+  "checkedAt": "2026-07-25T08:44:01.856Z"
+}

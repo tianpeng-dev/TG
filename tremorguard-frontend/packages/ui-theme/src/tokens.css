@@ -1,0 +1,54 @@
+/* TremorGuard UI Tokens - Web CSS Variables */
+:root {
+  /* Primary */
+  --tg-color-primary: #0D9488;
+  --tg-color-primary-dark: #0F766E;
+  --tg-color-primary-light: #99F6E4;
+
+  /* Accent */
+  --tg-color-accent: #D97706;
+
+  /* Status */
+  --tg-color-safe-bg: #D1FAE5;
+  --tg-color-safe-text: #065F46;
+  --tg-color-warning-bg: #FEF3C7;
+  --tg-color-warning-text: #92400E;
+  --tg-color-danger-bg: #FEE2E2;
+  --tg-color-danger-text: #991B1B;
+
+  /* Neutral */
+  --tg-color-ink: #1A1D21;
+  --tg-color-muted: #5E6573;
+  --tg-color-rule: #DDE1E7;
+  --tg-color-background: #F6F7F9;
+  --tg-color-surface: #FFFFFF;
+
+  /* Medication Phase */
+  --tg-color-on-phase: #34D399;
+  --tg-color-transition-phase: #FBBF24;
+  --tg-color-off-phase: #F87171;
+
+  /* Typography */
+  --tg-font-size-display: 48px;
+  --tg-font-size-headline: 24px;
+  --tg-font-size-title: 18px;
+  --tg-font-size-body: 16px;
+  --tg-font-size-caption: 14px;
+
+  /* Spacing */
+  --tg-spacing-xs: 4px;
+  --tg-spacing-sm: 8px;
+  --tg-spacing-md: 16px;
+  --tg-spacing-lg: 24px;
+  --tg-spacing-xl: 32px;
+  --tg-spacing-xxl: 48px;
+
+  /* Border Radius */
+  --tg-radius-button: 8px;
+  --tg-radius-card: 16px;
+  --tg-radius-pill: 999px;
+
+  /* Sizes */
+  --tg-size-min-touch: 48px;
+  --tg-size-clinic-exit: 72px;
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 - TremorGuard</title>
+    <style id="theme-vars">
+/* TremorGuard Brand Design System
+   Healthcare-grade accessible design for Parkinson's patients
+   Prefix: tg */
+
+:root {
+  /* ---- Primary Palette ---- */
+  --tg-primary: #0F766E;
+  --tg-primary-foreground: #FFFFFF;
+  --tg-primary-light: #14B8A6;
+
+  /* ---- Semantic State Colors ---- */
+  --state-success: #059669;
+  --state-success-foreground: #FFFFFF;
+  --state-success-light: #ECFDF5;
+  --state-warning: #D97706;
+  --state-warning-foreground: #FFFFFF;
+  --state-warning-light: #FFFBEB;
+  --state-error: #DC2626;
+  --state-error-foreground: #FFFFFF;
+  --state-error-light: #FEF2F2;
+  --state-info: #0891B2;
+  --state-info-foreground: #FFFFFF;
+  --state-info-light: #ECFEFF;
+
+  /* ---- Neutral Scale ---- */
+  --tg-neutral-50: #F8F9FB;
+  --tg-neutral-100: #F1F3F5;
+  --tg-neutral-200: #E5E7EB;
+  --tg-neutral-300: #D1D5DB;
+  --tg-neutral-400: #9CA3AF;
+  --tg-neutral-500: #6B7280;
+  --tg-neutral-600: #4B5563;
+  --tg-neutral-700: #374151;
+  --tg-neutral-800: #1F2937;
+  --tg-neutral-900: #1A1D23;
+
+  /* ---- Surface / Card Colors ---- */
+  --tg-background: #F8F9FB;
+  --tg-foreground: #1A1D23;
+  --tg-card: #FFFFFF;
+  --tg-card-foreground: #1A1D23;
+  --tg-muted: #F1F3F5;
+  --tg-muted-foreground: #6B7280;
+  --tg-popover: #FFFFFF;
+  --tg-popover-foreground: #1A1D23;
+  --tg-border: #E5E7EB;
+  --tg-input: #E5E7EB;
+  --tg-ring: #0F766E;
+
+  /* ---- Message Bubble Colors ---- */
+  --tg-msg-system: #F0FDFA;
+  --tg-msg-user: #ECFEFF;
+  --tg-msg-alert: #FFFBEB;
+  --tg-msg-confirmed: #ECFDF5;
+
+  /* ---- Radius Scale ---- */
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 12px;
+  --tg-radius-lg: 16px;
+  --tg-radius-full: 9999px;
+
+  /* ---- Spacing ---- */
+  --tg-spacing-xs: 4px;
+  --tg-spacing-sm: 8px;
+  --tg-spacing-md: 12px;
+  --tg-spacing-lg: 16px;
+  --tg-spacing-xl: 20px;
+  --tg-spacing-2xl: 24px;
+
+  /* ---- Typography ---- */
+  --tg-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --tg-font-mono: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+
+  --tg-text-xs: 14px;
+  --tg-text-sm: 16px;
+  --tg-text-base: 18px;
+  --tg-text-lg: 20px;
+  --tg-text-xl: 24px;
+  --tg-text-2xl: 28px;
+  --tg-text-3xl: 32px;
+
+  --tg-leading-tight: 1.3;
+  --tg-leading-normal: 1.5;
+  --tg-leading-relaxed: 1.7;
+
+  --tg-weight-regular: 400;
+  --tg-weight-medium: 500;
+  --tg-weight-semibold: 600;
+  --tg-weight-bold: 700;
+
+  /* ---- Shadows (static: alpha <= 0.05; floating layers may exceed) ---- */
+  --tg-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --tg-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --tg-shadow-floating: 0 8px 24px rgba(0,0,0,0.08);
+  --tg-shadow-overlay: 0 16px 48px rgba(0,0,0,0.12);
+
+  /* ---- Semantic Aliases for apply-html-head-contract ---- */
+  --tg-background: #F8F9FB;
+  --tg-foreground: #1A1D23;
+  --tg-card: #FFFFFF;
+  --tg-card-foreground: #1A1D23;
+  --tg-popover: #FFFFFF;
+  --tg-popover-foreground: #1A1D23;
+  --tg-primary: #0F766E;
+  --tg-primary-foreground: #FFFFFF;
+  --tg-muted: #F1F3F5;
+  --tg-muted-foreground: #6B7280;
+  --tg-border: #E5E7EB;
+  --tg-input: #E5E7EB;
+  --tg-ring: #0F766E;
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 12px;
+  --tg-radius-lg: 16px;
+  --tg-radius-full: 9999px;
+}
+
+/* ---- Typography Scale ---- */
+.tg-text-xs { font-size: var(--tg-text-xs); line-height: var(--tg-leading-normal); font-weight: var(--tg-weight-regular); }
+.tg-text-sm { font-size: var(--tg-text-sm); line-height: var(--tg-leading-normal); font-weight: var(--tg-weight-regular); }
+.tg-text-base { font-size: var(--tg-text-base); line-height: var(--tg-leading-normal); font-weight: var(--tg-weight-regular); }
+.tg-text-lg { font-size: var(--tg-text-lg); line-height: var(--tg-leading-tight); font-weight: var(--tg-weight-bold); }
+.tg-text-xl { font-size: var(--tg-text-xl); line-height: var(--tg-leading-tight); font-weight: var(--tg-weight-bold); }
+
+.tg-font-medium { font-weight: var(--tg-weight-medium); }
+.tg-font-semibold { font-weight: var(--tg-weight-semibold); }
+.tg-font-bold { font-weight: var(--tg-weight-bold); }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--tg-background);
+    --color-foreground: var(--tg-foreground);
+    --color-card: var(--tg-card);
+    --color-card-foreground: var(--tg-card-foreground);
+    --color-popover: var(--tg-popover);
+    --color-popover-foreground: var(--tg-popover-foreground);
+    --color-primary: var(--tg-primary);
+    --color-primary-foreground: var(--tg-primary-foreground);
+    --color-muted: var(--tg-muted);
+    --color-muted-foreground: var(--tg-muted-foreground);
+    --color-border: var(--tg-border);
+    --color-input: var(--tg-input);
+    --color-ring: var(--tg-ring);
+    --radius-sm: var(--tg-radius-sm);
+    --radius-md: var(--tg-radius-md);
+    --radius-lg: var(--tg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--tg-background); color: var(--tg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--tg-background); }
+      .text-background { color: var(--tg-background); }
+      .border-background { border-color: var(--tg-background); }
+      .ring-background { --tw-ring-color: var(--tg-background); }
+      .bg-foreground { background-color: var(--tg-foreground); }
+      .text-foreground { color: var(--tg-foreground); }
+      .border-foreground { border-color: var(--tg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--tg-foreground); }
+      .bg-card { background-color: var(--tg-card); }
+      .text-card { color: var(--tg-card); }
+      .border-card { border-color: var(--tg-card); }
+      .ring-card { --tw-ring-color: var(--tg-card); }
+      .bg-card-foreground { background-color: var(--tg-card-foreground); }
+      .text-card-foreground { color: var(--tg-card-foreground); }
+      .border-card-foreground { border-color: var(--tg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--tg-card-foreground); }
+      .bg-popover { background-color: var(--tg-popover); }
+      .text-popover { color: var(--tg-popover); }
+      .border-popover { border-color: var(--tg-popover); }
+      .ring-popover { --tw-ring-color: var(--tg-popover); }
+      .bg-popover-foreground { background-color: var(--tg-popover-foreground); }
+      .text-popover-foreground { color: var(--tg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--tg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--tg-popover-foreground); }
+      .bg-primary { background-color: var(--tg-primary); }
+      .text-primary { color: var(--tg-primary); }
+      .border-primary { border-color: var(--tg-primary); }
+      .ring-primary { --tw-ring-color: var(--tg-primary); }
+      .bg-primary-foreground { background-color: var(--tg-primary-foreground); }
+      .text-primary-foreground { color: var(--tg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--tg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--tg-primary-foreground); }
+      .bg-muted { background-color: var(--tg-muted); }
+      .text-muted { color: var(--tg-muted); }
+      .border-muted { border-color: var(--tg-muted); }
+      .ring-muted { --tw-ring-color: var(--tg-muted); }
+      .bg-muted-foreground { background-color: var(--tg-muted-foreground); }
+      .text-muted-foreground { color: var(--tg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--tg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--tg-muted-foreground); }
+      .bg-border { background-color: var(--tg-border); }
+      .text-border { color: var(--tg-border); }
+      .border-border { border-color: var(--tg-border); }
+      .ring-border { --tw-ring-color: var(--tg-border); }
+      .bg-input { background-color: var(--tg-input); }
+      .text-input { color: var(--tg-input); }
+      .border-input { border-color: var(--tg-input); }
+      .ring-input { --tw-ring-color: var(--tg-input); }
+      .bg-ring { background-color: var(--tg-ring); }
+      .text-ring { color: var(--tg-ring); }
+      .border-ring { border-color: var(--tg-ring); }
+      .ring-ring { --tw-ring-color: var(--tg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Status Bar Spacer -->
+  <div class="status-bar-spacer"></div>
+
+  <div class="profile-content-wrapper">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="avatar-circle">张</div>
+    <div style="font-size:var(--tg-text-lg); font-weight:var(--tg-weight-bold); color:var(--tg-foreground);">张秀兰</div>
+    <div class="connection-badge">
+      <span class="green-dot"></span>
+      <span style="font-size:var(--tg-text-xs); color:var(--state-success); font-weight:var(--tg-weight-medium);">设备已连接</span>
+    </div>
+  </div>
+
+  <!-- Function List -->
+  <div style="padding:var(--tg-spacing-lg) var(--tg-spacing-lg) 0 var(--tg-spacing-lg);">
+    <div class="function-card">
+
+      <!-- Medication Management -->
+      <div class="function-item" data-dom-id="nav-medication">
+        <div class="icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <path d="M8 12h8"/>
+            <path d="M12 8v8"/>
+          </svg>
+        </div>
+        <span class="function-label">用药管理</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+
+      <!-- Caregiver Settings -->
+      <div class="function-item">
+        <div class="icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <span class="function-label">照护者设置</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+
+      <!-- Device Management -->
+      <div class="function-item">
+        <div class="icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="6" width="22" height="12" rx="4"/>
+            <line x1="6" y1="10" x2="6" y2="14"/>
+            <line x1="10" y1="10" x2="10" y2="14"/>
+          </svg>
+        </div>
+        <span class="function-label">设备管理</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+
+      <!-- Notification Settings -->
+      <div class="function-item">
+        <div class="icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </div>
+        <span class="function-label">通知设置</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+
+      <!-- Help & Feedback -->
+      <div class="function-item">
+        <div class="icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--tg-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <span class="function-label">帮助与反馈</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--tg-neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Version -->
+  <div class="version-text">TremorGuard v1.0.0</div>
+
+  </div><!-- end profile-content-wrapper -->
+
+  <!-- Bottom Tab Navigation -->
+  <nav class="bottom-tab-nav" data-mobile-nav="global">
+    <!-- Home Tab -->
+    <button class="tab-item" data-dom-id="tab-home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span class="tab-label">首页</span>
+    </button>
+
+    <!-- Reports Tab -->
+    <button class="tab-item" data-dom-id="tab-reports">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+      <span class="tab-label">报告</span>
+    </button>
+
+    <!-- Profile Tab (Active) -->
+    <button class="tab-item active" data-nav-key="profile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span class="tab-label">我的</span>
+    </button>
+  </nav>
+
+
+    <style>
+    body {
+      background: var(--tg-background);
+      min-height: 100vh;
+      font-family: var(--tg-font-sans);
+      color: var(--tg-foreground);
+      -webkit-font-smoothing: antialiased;
+      max-width: 100%;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .status-bar-spacer {
+      height: 44px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--tg-spacing-2xl) var(--tg-spacing-xl) var(--tg-spacing-xl) var(--tg-spacing-xl);
+      background: var(--tg-card);
+    }
+    .avatar-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--tg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tg-primary-foreground);
+      font-size: var(--tg-text-xl);
+      font-weight: var(--tg-weight-bold);
+      margin-bottom: var(--tg-spacing-md);
+    }
+    .connection-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .green-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--state-success);
+      flex-shrink: 0;
+    }
+    .function-card {
+      background: var(--tg-card);
+      border-radius: var(--tg-radius-lg);
+      box-shadow: var(--tg-shadow-sm);
+      overflow: hidden;
+    }
+    .function-item {
+      display: flex;
+      align-items: center;
+      padding: 0 var(--tg-spacing-xl);
+      min-height: 56px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .function-item:active {
+      background: var(--tg-muted);
+    }
+    .function-item + .function-item {
+      border-top: 1px solid var(--tg-border);
+    }
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--tg-radius-md);
+      background: #F0FDFA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: var(--tg-spacing-lg);
+      flex-shrink: 0;
+    }
+    .function-label {
+      flex: 1;
+      font-size: var(--tg-text-base);
+      font-weight: var(--tg-weight-medium);
+      color: var(--tg-foreground);
+    }
+    .chevron {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .bottom-tab-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 100%;
+      height: 64px;
+      background: var(--tg-card);
+      border-top: 1px solid var(--tg-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 40;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 48px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      border: none;
+      background: transparent;
+      padding: 4px 0;
+    }
+    .tab-item.active {
+      color: var(--tg-primary);
+    }
+    .tab-item:not(.active) {
+      color: var(--tg-neutral-400);
+    }
+    .tab-label {
+      font-size: var(--tg-text-xs);
+      margin-top: 2px;
+    }
+    .version-text {
+      text-align: center;
+      font-size: var(--tg-text-xs);
+      color: var(--tg-neutral-400);
+      padding: var(--tg-spacing-xl) 0 80px 0;
+    }
+    @media (min-width: 768px) {
+      .bottom-tab-nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 72px;
+        height: 100% !important;
+        max-width: 72px;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 24px;
+        border-top: none;
+        border-right: 1px solid var(--tg-border);
+        transform: none;
+        gap: 8px;
+        z-index: 100;
+      }
+      .bottom-tab-nav .tab-label,
+      .bottom-tab-nav .tab-item span {
+        display: none;
+      }
+      .bottom-tab-nav .tab-item,
+      .bottom-tab-nav .tab-item svg {
+        width: 48px;
+        height: 48px;
+      }
+      .profile-content-wrapper {
+        margin-left: 72px;
+        max-width: 648px;
+        margin-right: auto;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .profile-header {
+        flex-direction: row;
+        gap: var(--tg-spacing-xl);
+        align-items: center;
+      }
+      .avatar-circle {
+        margin-bottom: 0;
+      }
+      .status-bar-spacer {
+        display: none;
+      }
+      .version-text {
+        padding-bottom: 32px;
+      }
+    }
+  </style>
+</body>
+</html>
