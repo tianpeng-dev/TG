@@ -1,0 +1,30 @@
+# Git
+.git/
+.gitignore
+
+# 设计文档与原型（与后端部署无关）
+tremorguard-drd/
+tremorguard-ux-analysis/
+tremorguard-investment-prd/
+tremorguard-app/
+
+# 前端 monorepo
+tremorguard-frontend/
+
+# 固件
+tremorguard-firmware/
+
+# Trae 工作产物
+.trae/
+.trae-html-share-packages/
+
+# 杂项资源
+*.jpg
+*.png
+*.zip
+*.md
+*.txt
+
+# 本地数据库
+*.db
+*.sqlite*
